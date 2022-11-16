@@ -12,21 +12,18 @@ const connect = function() {
 
   conn.on("connect", () => {
     console.log("You're in! Play the Game!");
+    conn.write("Name: MCG");
   });
-
+  
   conn.on("data", (data) => {
-    console.log(data);
+    console.log(data.toString());
   });
-
-  conn.on("end", () => {
-    console.log("you ded cuz you idled");
-  });
-
 
 
   return conn;
 
 
 };
+
 
 module.exports = connect;
