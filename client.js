@@ -1,10 +1,12 @@
 const net = require("net");
 
-// establishes a connection with the game server
-const connect = function() {
+// establishes a connection with the game server and returns
+
+const connect = function(host, port) {
   const conn = net.createConnection({
-    host: 'localhost',
-    port: 50541
+    host: host,
+    port: port,
+
   });
 
   // interpret incoming data as text
@@ -19,11 +21,11 @@ const connect = function() {
     console.log(data.toString());
   });
 
+  conn.on('end', () => {
+    console.log('disconnected from server');
+  });
 
   return conn;
-
-
 };
 
-
-module.exports = connect;
+module.exports = {connect};
