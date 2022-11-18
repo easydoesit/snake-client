@@ -19,8 +19,6 @@ const setupInput = function(conn) {
 
 const handleUserInput = function(key) {
 
-  
-
   if (key !== '\u0003') {
     let input = String(CONTROLS[key]);
     connection.write(input);

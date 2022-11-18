@@ -19,6 +19,7 @@ const connect = function(host, port, player) {
   
   conn.on("data", (data) => {
     console.log(data.toString());
+    console.log(data);
   });
 
   conn.on('end', () => {
