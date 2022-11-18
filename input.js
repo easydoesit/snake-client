@@ -1,3 +1,4 @@
+const {CONTROLS} = require("./constants");
 // Stores the active TCP connection object.
 let connection;
 
@@ -18,47 +19,15 @@ const setupInput = function(conn) {
 
 const handleUserInput = function(key) {
 
-  if (key === '\u0003') {
+  
+
+  if (key !== '\u0003') {
+    let input = String(CONTROLS[key]);
+    connection.write(input);
+  } else {
     process.exit();
-
   }
-
-  if (key === 'w') {
-    console.log("Move: up");
-    connection.write("Move: up");
-
-  }
-
-  if (key === 's') {
-    console.log("Move: down");
-    connection.write("Move: down");
-
-  }
-
-  if (key === 'a') {
-    console.log("Move: left");
-    connection.write("Move: left");
-
-  }
-  if (key === 'd') {
-    console.log("Move: right");
-    connection.write("Move: right");
-
-  }
-
-  if (key === 't') {
-    connection.write("Say: eat tail");
-  }
-
-  if (key === 'y') {
-    connection.write("Say: sssssssss");
-  }
-
-  if (key === 'r') {
-    connection.write("Say: num num num");
-  }
-
   
 };
 
-module.exports = {setupInput};
+module.exports = {setupInput, handleUserInput};
